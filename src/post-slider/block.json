@@ -1,9 +1,9 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "markhoney/query-loop-slider",
+	"name": "markhoney/post-slider",
 	"version": "0.1.0",
-	"title": "Query Loop Slider",
+	"title": "Post Slider",
 	"category": "theme",
 	"icon": "slides",
 	"description": "A WordPress block that provides similar functionality to the Post Template, but displays posts in a slider/carousel format.",
@@ -134,6 +134,6 @@
 			"default": "{}"
 		}
   },
-	"textdomain": "query-loop-slider",
+	"textdomain": "post-slider",
 	"editorScript": "file:./index.js"
 }

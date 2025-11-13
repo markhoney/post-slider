@@ -67,7 +67,7 @@ export default function Edit(props) {
 	);
 
 	const blockProps = useBlockProps({
-		className: 'query-loop-slider-editor'
+		className: 'post-slider-editor'
 	});
 
 	const innerBlocksProps = useInnerBlocksProps({}, {
@@ -78,134 +78,134 @@ export default function Edit(props) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Slider Settings', 'query-loop-slider')} initialOpen={true}>
+				<PanelBody title={__('Slider Settings', 'post-slider')} initialOpen={true}>
 					<RangeControl
-						label={__('Slides Per View', 'query-loop-slider')}
+						label={__('Slides Per View', 'post-slider')}
 						value={slidesPerView}
 						onChange={(value) => setAttributes({ slidesPerView: value })}
 						min={1}
 						max={10}
-						help={__('Number of slides visible at the same time', 'query-loop-slider')}
+						help={__('Number of slides visible at the same time', 'post-slider')}
 					/>
 					<RangeControl
-						label={__('Space Between (px)', 'query-loop-slider')}
+						label={__('Space Between (px)', 'post-slider')}
 						value={spaceBetween}
 						onChange={(value) => setAttributes({ spaceBetween: value })}
 						min={0}
 						max={100}
-						help={__('Distance between slides in pixels', 'query-loop-slider')}
+						help={__('Distance between slides in pixels', 'post-slider')}
 					/>
 					<RangeControl
-						label={__('Speed (ms)', 'query-loop-slider')}
+						label={__('Speed (ms)', 'post-slider')}
 						value={speed}
 						onChange={(value) => setAttributes({ speed: value })}
 						min={100}
 						max={2000}
 						step={100}
-						help={__('Duration of transition animation', 'query-loop-slider')}
+						help={__('Duration of transition animation', 'post-slider')}
 					/>
 					<ToggleControl
-						label={__('Centered Slides', 'query-loop-slider')}
+						label={__('Centered Slides', 'post-slider')}
 						checked={centeredSlides}
 						onChange={(value) => setAttributes({ centeredSlides: value })}
-						help={__('Center the active slide', 'query-loop-slider')}
+						help={__('Center the active slide', 'post-slider')}
 					/>
 				</PanelBody>
 
-				<PanelBody title={__('Autoplay', 'query-loop-slider')} initialOpen={false}>
+				<PanelBody title={__('Autoplay', 'post-slider')} initialOpen={false}>
 					<ToggleControl
-						label={__('Enable Autoplay', 'query-loop-slider')}
+						label={__('Enable Autoplay', 'post-slider')}
 						checked={autoplay}
 						onChange={(value) => setAttributes({ autoplay: value })}
 					/>
 					{autoplay && (
 						<RangeControl
-							label={__('Autoplay Delay (ms)', 'query-loop-slider')}
+							label={__('Autoplay Delay (ms)', 'post-slider')}
 							value={autoplayDelay}
 							onChange={(value) => setAttributes({ autoplayDelay: value })}
 							min={1000}
 							max={10000}
 							step={500}
-							help={__('Delay between transitions', 'query-loop-slider')}
+							help={__('Delay between transitions', 'post-slider')}
 						/>
 					)}
 				</PanelBody>
 
-				<PanelBody title={__('Navigation', 'query-loop-slider')} initialOpen={false}>
+				<PanelBody title={__('Navigation', 'post-slider')} initialOpen={false}>
 					<ToggleControl
-						label={__('Show Navigation Arrows', 'query-loop-slider')}
+						label={__('Show Navigation Arrows', 'post-slider')}
 						checked={navigation}
 						onChange={(value) => setAttributes({ navigation: value })}
 					/>
 					<ToggleControl
-						label={__('Show Pagination', 'query-loop-slider')}
+						label={__('Show Pagination', 'post-slider')}
 						checked={pagination}
 						onChange={(value) => setAttributes({ pagination: value })}
 					/>
 					{pagination && (
 						<SelectControl
-							label={__('Pagination Type', 'query-loop-slider')}
+							label={__('Pagination Type', 'post-slider')}
 							value={paginationType}
 							options={[
-								{ label: __('Bullets', 'query-loop-slider'), value: 'bullets' },
-								{ label: __('Fraction', 'query-loop-slider'), value: 'fraction' },
-								{ label: __('Progress Bar', 'query-loop-slider'), value: 'progressbar' },
+								{ label: __('Bullets', 'post-slider'), value: 'bullets' },
+								{ label: __('Fraction', 'post-slider'), value: 'fraction' },
+								{ label: __('Progress Bar', 'post-slider'), value: 'progressbar' },
 							]}
 							onChange={(value) => setAttributes({ paginationType: value })}
 						/>
 					)}
 					<ToggleControl
-						label={__('Loop', 'query-loop-slider')}
+						label={__('Loop', 'post-slider')}
 						checked={loop}
 						onChange={(value) => setAttributes({ loop: value })}
-						help={__('Enable continuous loop mode', 'query-loop-slider')}
+						help={__('Enable continuous loop mode', 'post-slider')}
 					/>
 				</PanelBody>
 
-				<PanelBody title={__('Effects', 'query-loop-slider')} initialOpen={false}>
+				<PanelBody title={__('Effects', 'post-slider')} initialOpen={false}>
 					<SelectControl
-						label={__('Transition Effect', 'query-loop-slider')}
+						label={__('Transition Effect', 'post-slider')}
 						value={effect}
 						options={[
-							{ label: __('Slide', 'query-loop-slider'), value: 'slide' },
-							{ label: __('Fade', 'query-loop-slider'), value: 'fade' },
-							{ label: __('Cube', 'query-loop-slider'), value: 'cube' },
-							{ label: __('Coverflow', 'query-loop-slider'), value: 'coverflow' },
-							{ label: __('Flip', 'query-loop-slider'), value: 'flip' },
+							{ label: __('Slide', 'post-slider'), value: 'slide' },
+							{ label: __('Fade', 'post-slider'), value: 'fade' },
+							{ label: __('Cube', 'post-slider'), value: 'cube' },
+							{ label: __('Coverflow', 'post-slider'), value: 'coverflow' },
+							{ label: __('Flip', 'post-slider'), value: 'flip' },
 						]}
 						onChange={(value) => setAttributes({ effect: value })}
 					/>
 				</PanelBody>
 
-				<PanelBody title={__('Custom Swiper Parameters', 'query-loop-slider')} initialOpen={false}>
+				<PanelBody title={__('Custom Swiper Parameters', 'post-slider')} initialOpen={false}>
 					<textarea
 						style={{ width: '100%', minHeight: '80px', fontFamily: 'monospace' }}
 						value={customParams}
 						onChange={e => setAttributes({ customParams: e.target.value })}
-						placeholder={__('Enter custom Swiper parameters as JSON', 'query-loop-slider')}
+						placeholder={__('Enter custom Swiper parameters as JSON', 'post-slider')}
 					/>
 				<p style={{ fontSize: '12px', color: '#757575', marginTop: '4px' }}>
-					{__('These parameters will be merged with the options set above. Invalid JSON will be ignored.', 'query-loop-slider')}
+					{__('These parameters will be merged with the options set above. Invalid JSON will be ignored.', 'post-slider')}
 					{' '}
 					<a href="https://swiperjs.com/swiper-api" target="_blank" rel="noopener noreferrer">
-						{__('View Swiper API documentation', 'query-loop-slider')}
+						{__('View Swiper API documentation', 'post-slider')}
 					</a>
 				</p>
-			</PanelBody>				<PanelBody title={__('Responsive Breakpoints', 'query-loop-slider')} initialOpen={false}>
+			</PanelBody>				<PanelBody title={__('Responsive Breakpoints', 'post-slider')} initialOpen={false}>
 					<ToggleControl
-						label={__('Enable Custom Breakpoints', 'query-loop-slider')}
+						label={__('Enable Custom Breakpoints', 'post-slider')}
 						checked={enableBreakpoints}
 						onChange={(value) => setAttributes({ enableBreakpoints: value })}
-						help={__('Override slides per view at different screen sizes', 'query-loop-slider')}
+						help={__('Override slides per view at different screen sizes', 'post-slider')}
 					/>
 					<p style={{ fontSize: '12px', color: '#757575', marginTop: '8px' }}>
-						{__('When enabled, the slider will show:', 'query-loop-slider')}
+						{__('When enabled, the slider will show:', 'post-slider')}
 						<br />
-						{__('• 1 slide on mobile (< 640px)', 'query-loop-slider')}
+						{__('• 1 slide on mobile (< 640px)', 'post-slider')}
 						<br />
-						{__('• 2 slides on tablet (640-1023px)', 'query-loop-slider')}
+						{__('• 2 slides on tablet (640-1023px)', 'post-slider')}
 						<br />
-						{__('• 3 slides on desktop (≥ 1024px)', 'query-loop-slider')}
+						{__('• 3 slides on desktop (≥ 1024px)', 'post-slider')}
 					</p>
 				</PanelBody>
 			</InspectorControls>

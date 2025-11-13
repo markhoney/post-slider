@@ -1,17 +1,17 @@
 {
-	"name": "query-loop-slider",
+	"name": "post-slider",
 	"version": "0.1.0",
 	"description": "A WordPress block that provides similar functionality to the Post Template, but displays posts in a slider/carousel format.",
 	"author": "Mark Honeychurch <mark@honeychurch.org>",
 	"license": "GPL-2.0-or-later",
-  "homepage": "https://github.com/markhoney/query-loop-slider",
+  "homepage": "https://github.com/markhoney/post-slider",
   "repository": {
 		"type": "git",
-		"url": "https://github.com/markhoney/query-loop-slider"
+		"url": "https://github.com/markhoney/post-slider"
 	},
 	"main": "build/index.js",
 	"scripts": {
-		"swiper": "mkdir -p build/query-loop-slider/swiper && cp node_modules/swiper/swiper-bundle.min.css node_modules/swiper/swiper-bundle.min.js build/query-loop-slider/swiper/",
+		"swiper": "mkdir -p build/post-slider/swiper && cp node_modules/swiper/swiper-bundle.min.css node_modules/swiper/swiper-bundle.min.js build/post-slider/swiper/",
 		"build": "wp-scripts build --blocks-manifest && npm run swiper",
 		"format": "wp-scripts format",
 		"lint:css": "wp-scripts lint-style",
