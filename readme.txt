@@ -1,7 +1,9 @@
 === Post Slider ===
 Contributors:      Mark Honeychurch
 Tags:              block, query, loop, slider, carousel, flip, swiper
+Requires at least: 6.7
 Tested up to:      6.8.3
+Requires PHP:      7.4
 Stable tag:        0.1.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -10,46 +12,102 @@ A WordPress block that provides similar functionality to the Post Template, but 
 
 == Description ==
 
-This is the long description. No limit, and you can use Markdown (as well as in the following sections).
+Post Slider is a block for modern WordPress that lets you display the results of a Query Loop as a responsive, touch-friendly slider powered by [Swiper](https://swiperjs.com/).
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+The block is designed to be placed inside a `Query Loop` and will render the inner blocks you define (for each post) as individual slides on the front end. Assets are only loaded on pages where the block appears.
+
+=== Highlights ===
+
+* Works inside the `Query Loop` block (inherits the query).
+* Server-side rendering that respects your inner blocks as the slide template.
+* Uses Swiper for smooth, accessible, mobile-friendly sliders.
+* Loads Swiper assets only when the block is present on the page.
+* Configurable options: slides per view, spacing, autoplay, navigation, pagination, speed, effects, centered slides, breakpoints, and more.
+* Supports core block styling options (spacing, color, typography, dimensions, border, shadows, etc.).
+
+=== Requirements ===
+
+* WordPress 6.7 or newer
+* PHP 7.4 or newer
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+1. Upload the plugin to `/wp-content/plugins/post-slider` or install it via the Plugins screen.
+2. Activate the plugin via the “Plugins” screen.
 
-e.g.
+=== From source (developers) ===
 
-1. Upload the plugin files to the `/wp-content/plugins/post-slider` directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the 'Plugins' screen in WordPress
+If you’re working from source:
 
+```
+npm install
+npm run build
+```
+
+This compiles the block to `build/` and copies the required Swiper assets. Use `npm start` for a watcher during development, or `npm run plugin-zip` to produce a distributable ZIP.
+
+== Usage ==
+
+1. Add a `Query Loop` block to your page or template.
+2. Inside the Query Loop, insert the “Post Slider” block.
+3. Build the slide template by adding inner blocks (e.g., Post Featured Image, Post Title, Post Excerpt, Buttons, etc.).
+4. Configure slider settings in the block sidebar.
+
+=== Settings (key options) ===
+
+* Slides per view: Number of slides visible at once (default: 1).
+* Space between: Gap between slides in pixels (default: 0).
+* Autoplay: Enable/disable autoplay; set delay in ms (default: 3000).
+* Loop: Repeat slides continuously (default: true).
+* Navigation: Show previous/next arrows (default: true).
+* Pagination: Show bullets/fraction/progressbar (default: bullets).
+* Speed: Transition speed in ms (default: 300).
+* Effect: `slide`, `fade`, `cube`, `coverflow`, or `flip`.
+* Centered slides: Center the active slide (default: false).
+* Breakpoints: Toggle “Enable Breakpoints” to apply sensible defaults (640/768/1024). You can also fully customize via Custom Params.
+* Custom params (JSON): Advanced Swiper configuration merged into the generated config. Example:
+
+```
+{
+	"grabCursor": true,
+	"breakpoints": {
+		"640": { "slidesPerView": 1 },
+		"768": { "slidesPerView": 2 },
+		"1024": { "slidesPerView": 4 }
+	}
+}
+```
+
+Note: Invalid JSON is ignored. When using certain effects (e.g., `fade`, `cube`, `flip`), slides per view is forced to 1 by Swiper.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Why are no posts showing? =
 
-An answer to that question.
+The block must be placed inside a `Query Loop` so it can inherit a query and iterate posts. Ensure your Query Loop is returning posts for the current context.
 
-= What about foo bar? =
+= Does it load Swiper on every page? =
 
-Answer to foo bar dilemma.
+No. Swiper CSS/JS is registered globally but only enqueued on pages where the `Post Slider` block is present.
+
+= Can I style slides with theme tools? =
+
+Yes. The block supports core styling controls (spacing, color, typography, dimensions, border, shadows). Use inner blocks to control the slide markup and style.
+
+= How do I customize breakpoints further? =
+
+Either enable the built-in “Enable Breakpoints” option for sensible defaults, or set a custom `breakpoints` object via “Custom params” JSON.
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. Example of a three-column post slider with navigation and pagination.
+2. Editing the slide template using core post blocks inside the Query Loop.
 
 == Changelog ==
 
 = 0.1.0 =
-* Release
+* Initial release.
 
-== Arbitrary section ==
+== Credits ==
 
-You may provide arbitrary sections, in the same format as the ones above. This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation." Arbitrary sections will be shown below the built-in sections outlined above.
+Powered by [Swiper](https://swiperjs.com/).
